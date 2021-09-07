@@ -1,15 +1,18 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
+/*
+	THREE KEY STRUCTURES FOR UNIT TEST
+		Arrange
+		Assert
+		Act
+*/
 func TestHello(t *testing.T) {
-	/*
-		THREE KEY STRUCTURES FOR UNIT TEST
-			Arrange
-			Assert
-			Act
-	*/
 
+	// assert function
 	assertCorrectMessage := func(t testing.TB, got, want string) {
 		t.Helper()
 		// act
@@ -23,7 +26,6 @@ func TestHello(t *testing.T) {
 		got := Hello("Lorezi", "English")
 		want := "Hello, Lorezi"
 
-		// assert
 		assertCorrectMessage(t, got, want)
 	})
 
@@ -31,7 +33,7 @@ func TestHello(t *testing.T) {
 		// arrange
 		got := Hello("", "English")
 		want := "Hello, World"
-		// assert
+
 		assertCorrectMessage(t, got, want)
 
 	})
