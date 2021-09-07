@@ -4,19 +4,38 @@ import "testing"
 
 func TestHello(t *testing.T) {
 	/*
-		Arrange
-		Assert
-		Act
+		THREE KEY PATTERNS FOR UNIT TEST
+			Arrange
+			Assert
+			Act
 	*/
 
-	// arrange
-	got := Hello("Chris")
-	want := "Hello, Chris"
-
-	// assert
-	if got != want {
-
+	assertCorrectMessage := func(t testing.TB, got, want string) {
+		t.Helper()
 		// act
-		t.Errorf("got %q want %q", got, want)
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
 	}
+
+	t.Run("saying hello to people", func(t *testing.T) {
+		// arrange
+		got := Hello("Lorezi")
+		want := "Hello, Lorezi"
+
+		// assert
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T) {
+
+		// arrange
+		got := Hello("")
+		want := "Hello, World"
+
+		// assert
+		assertCorrectMessage(t, got, want)
+
+	})
+
 }
