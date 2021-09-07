@@ -14,6 +14,12 @@ func TestIteration(t *testing.T) {
 	}
 }
 
+func BenchmarkIteration(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Iteration("a")
+	}
+}
+
 func ExampleIteration() {
 	result := Iteration("a")
 	fmt.Println(result)
