@@ -6,7 +6,7 @@ import (
 )
 
 func TestIteration(t *testing.T) {
-	iteration := Iteration("a")
+	iteration := Iteration("a", 5)
 	expected := "aaaaa"
 
 	if iteration != expected {
@@ -16,12 +16,12 @@ func TestIteration(t *testing.T) {
 
 func BenchmarkIteration(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Iteration("a")
+		Iteration("a", 5)
 	}
 }
 
 func ExampleIteration() {
-	result := Iteration("a")
+	result := Iteration("a", 5)
 	fmt.Println(result)
 	// Output: aaaaa
 }
