@@ -4,7 +4,7 @@ import "testing"
 
 func TestHello(t *testing.T) {
 	/*
-		THREE KEY PATTERNS FOR UNIT TEST
+		THREE KEY STRUCTURES FOR UNIT TEST
 			Arrange
 			Assert
 			Act

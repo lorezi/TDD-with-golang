@@ -24,19 +24,19 @@ func greetingPrefix(language string) (prefix string) {
 
 	case spanish:
 		prefix = spanishHelloPrefix
-		return prefix
+		return
 
 	case french:
 		prefix = frenchHelloPrefix
-		return prefix
+		return
 
 	case pidgin:
 		prefix = pidginHelloPrefix
-		return prefix
+		return
 
 	default:
 		prefix = englishHelloPrefix
-		return prefix
+		return
 	}
 
 }
