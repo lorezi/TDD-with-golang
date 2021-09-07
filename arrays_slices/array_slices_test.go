@@ -16,4 +16,13 @@ func TestSum(t *testing.T) {
 
 		assertCorrectMessage(t, got, expected, xs)
 	})
+
+	t.Run("collection of varying number of slices", func(t *testing.T) {
+		got := SumAll([]int{1, 2}, []int{0, 9})
+		expected := []int{3, 9}
+		if got != expected {
+			t.Errorf("got %v expected %v", got, expected)
+		}
+
+	})
 }
