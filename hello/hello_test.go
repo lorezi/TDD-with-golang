@@ -10,8 +10,8 @@ func TestHello(t *testing.T) {
 	*/
 
 	// arrange
-	got := Hello()
-	want := "Hello, world!"
+	got := Hello("Chris")
+	want := "Hello, Chris"
 
 	// assert
 	if got != want {
