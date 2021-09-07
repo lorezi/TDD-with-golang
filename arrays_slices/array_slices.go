@@ -15,12 +15,7 @@ func SumAll(xs ...[]int) []int {
 	xsum := []int{}
 
 	for _, v := range xs {
-		total := 0
-		for _, n := range v {
-			total += n
-
-		}
-		xsum = append(xsum, total)
+		xsum = append(xsum, Sum(v))
 	}
 
 	return xsum
