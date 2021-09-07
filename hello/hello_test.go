@@ -11,7 +11,7 @@ func TestHello(t *testing.T) {
 
 	// arrange
 	got := Hello()
-	want := "Hello, world"
+	want := "Hello, world!"
 
 	// assert
 	if got != want {
