@@ -1,6 +1,9 @@
 package iteration
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestIteration(t *testing.T) {
 	iteration := Iteration("a")
@@ -9,4 +12,10 @@ func TestIteration(t *testing.T) {
 	if iteration != expected {
 		t.Errorf("expected %q got %q", expected, iteration)
 	}
+}
+
+func ExampleIteration() {
+	result := Iteration("a")
+	fmt.Println(result)
+	// Output: aaaaa
 }
