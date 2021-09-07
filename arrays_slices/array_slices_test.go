@@ -8,7 +8,7 @@ func TestArrayslice(t *testing.T) {
 	expected := 15
 
 	if got != expected {
-		t.Errorf("expected '%d' got '%d'", expected, got)
+		t.Errorf("expected '%d' got '%d' given, %v", expected, got, xs)
 	}
 
 }
