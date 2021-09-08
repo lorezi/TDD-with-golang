@@ -7,6 +7,7 @@ import (
 
 func TestSum(t *testing.T) {
 	assertCorrectMessage := func(t testing.TB, got, expected []int) {
+		t.Helper()
 		if !reflect.DeepEqual(got, expected) {
 			t.Errorf("got %v expected %v", got, expected)
 		}
