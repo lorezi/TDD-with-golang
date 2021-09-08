@@ -10,3 +10,13 @@ func TestPerimeter(t *testing.T) {
 		t.Errorf("got %.2f wanted %.2f", got, want)
 	}
 }
+
+func TestArea(t *testing.T) {
+	got := Area(12.00, 6.0)
+	want := 72.0
+
+	if got != want {
+		t.Errorf("got %.2f wanted %.2f", got, want)
+	}
+
+}
