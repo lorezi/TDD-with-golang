@@ -1,4 +1,4 @@
-package structmethodsinterfaces
+package main
 
 import "testing"
 
@@ -29,7 +29,7 @@ func TestArea(t *testing.T) {
 	t.Run("circles", func(t *testing.T) {
 		c := Circle{10}
 		got := c.Area()
-		want := 314.15926
+		want := 314.1592653589793
 
 		if got != want {
 			t.Errorf("got %g wanted %g", got, want)
