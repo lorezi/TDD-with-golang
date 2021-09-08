@@ -36,4 +36,12 @@ func TestSum(t *testing.T) {
 			t.Errorf("got %v expected %v", got, expected)
 		}
 	})
+
+	t.Run("sum up the tail of an empty slice", func(t *testing.T) {
+		got := SumAllTails([]int{}, []int{0, 9})
+		expected := []int{0, 9}
+		if !reflect.DeepEqual(got, expected) {
+			t.Errorf("got %v expected %v", got, expected)
+		}
+	})
 }
