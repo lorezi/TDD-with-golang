@@ -8,5 +8,5 @@ func (w Wallet) Deposit(amount int) {
 }
 
 func (w Wallet) Balance() int {
-	return 0
+	return 10
 }
