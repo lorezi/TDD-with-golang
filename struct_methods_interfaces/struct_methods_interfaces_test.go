@@ -17,7 +17,7 @@ func TestPerimeter(t *testing.T) {
 
 func TestArea(t *testing.T) {
 
-	/* Table Driven Test TDT */
+	/* Table Driven Test ==> TDT */
 
 	// Anonymous struct
 	areaTests := []struct {
