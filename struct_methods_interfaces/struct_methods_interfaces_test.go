@@ -7,7 +7,7 @@ func TestPerimeter(t *testing.T) {
 		Width:  10.00,
 		Height: 10.00,
 	}
-	got := r.Perimeter(10.00, 10.00)
+	got := Perimeter(r.Width, r.Height)
 	want := 40.00
 
 	if got != want {
