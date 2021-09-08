@@ -21,28 +21,34 @@ func TestArea(t *testing.T) {
 
 	// Anonymous struct
 	areaTests := []struct {
-		shape Shape
-		want  float64
+		name    string
+		shape   Shape
+		hasArea float64
 	}{
 		{
-			shape: Rectangle{Width: 12, Height: 6},
-			want:  72.0,
+			name:    "Rectangle",
+			shape:   Rectangle{Width: 12, Height: 6},
+			hasArea: 72.0,
 		},
 		{
-			shape: Circle{Radius: 10},
-			want:  314.1592653589793,
+			name:    "Circle",
+			shape:   Circle{Radius: 10},
+			hasArea: 314.1592653589793,
 		},
 		{
-			shape: Triangle{Length: 12, Height: 6},
-			want:  36.0,
+			name:    "Triangle",
+			shape:   Triangle{Length: 12, Height: 6},
+			hasArea: 36.0,
 		},
 	}
 
-	for _, v := range areaTests {
-		got := v.shape.Area()
-		if got != v.want {
-			t.Errorf("%#v got %g want %g", v.shape, got, v.want)
-		}
+	for _, tt := range areaTests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := tt.shape.Area()
+			if got != tt.hasArea {
+				t.Errorf("%#v got %g hasArea %g", tt.shape, got, tt.hasArea)
+			}
+		})
 	}
 
 }
