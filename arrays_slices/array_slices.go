@@ -1,5 +1,7 @@
 package arraysslices
 
+import "fmt"
+
 // Sum will take an array of numbers and return the total
 func Sum(xs []int) int {
 	total := 0
@@ -14,6 +16,8 @@ func SumAll(xs ...[]int) []int {
 
 	xsum := []int{}
 
+	fmt.Println(xs)
+
 	for _, v := range xs {
 		xsum = append(xsum, Sum(v))
 	}
@@ -21,6 +25,14 @@ func SumAll(xs ...[]int) []int {
 	return xsum
 }
 
+// SumAllTails will take a varying number of slices (variadic function) and return a new slice containing the totals of the 'tails' of each slice
 func SumAllTails(xs ...[]int) []int {
-	return []int{0, 9}
+	xsum := []int{}
+
+	for _, v := range xs {
+		tail := v[1:]
+		xsum = append(xsum, Sum(tail))
+	}
+
+	return xsum
 }
