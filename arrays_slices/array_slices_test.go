@@ -28,4 +28,12 @@ func TestSum(t *testing.T) {
 		}
 
 	})
+
+	t.Run("calculate the totals of the 'tails' of each slice", func(t *testing.T) {
+		got := SumAllTails([]int{1, 2}, []int{0, 9})
+		expected := []int{0, 9}
+		if !reflect.DeepEqual(got, expected) {
+			t.Errorf("got %v expected %v", got, expected)
+		}
+	})
 }
