@@ -20,3 +20,7 @@ func SumAll(xs ...[]int) []int {
 
 	return xsum
 }
+
+func SumAllTails(xs ...[]int) []int {
+	return []int{0, 0}
+}
