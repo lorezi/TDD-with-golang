@@ -6,10 +6,10 @@ import (
 
 func TestSearch(t *testing.T) {
 
-	dictionary := Dictionary{"test": "this is just a test"}
+	dictionary := Dictionary{"golang": "Go is about type"}
 
-	got := dictionary.Search(dictionary, "test")
-	want := "this is just a test"
+	got := dictionary.Search("golang")
+	want := "Go is about type"
 
 	assertStrings(t, got, want)
 
