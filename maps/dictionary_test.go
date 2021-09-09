@@ -42,6 +42,27 @@ func TestAdd(t *testing.T) {
 	})
 }
 
+func TestUpdate(t *testing.T) {
+	word := "golang"
+	definition := "Go is all about type"
+
+	// add a word to the dictionary
+	dictionary := Dictionary{word: definition}
+
+	// search for the word you want to update
+	got, err := dictionary.Search("golang")
+	if got == "" {
+		t.Fatal("suppose to find a word")
+	}
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// update the dictionary
+	dictionary.Update(word, definition)
+
+}
+
 func assertStrings(t testing.TB, got, want string) {
 	t.Helper()
 	if got != want {
