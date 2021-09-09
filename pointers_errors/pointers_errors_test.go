@@ -14,8 +14,9 @@ func TestWallet(t *testing.T) {
 		wallet := Wallet{
 			balance: Bitcoin(20),
 		}
-		wallet.Withdraw(Bitcoin(5))
+		err := wallet.Withdraw(Bitcoin(5))
 		assertBalance(t, wallet, Bitcoin(15))
+		assertNoError(t, err)
 
 	})
 
@@ -45,5 +46,12 @@ func assertError(t testing.TB, got error, want string) {
 
 	if got.Error() != want {
 		t.Errorf("got %q, want %q", got, want)
+	}
+}
+
+func assertNoError(t testing.TB, err error) {
+	t.Helper()
+	if err != nil {
+		t.Fatal("got an error but didn't want one")
 	}
 }
