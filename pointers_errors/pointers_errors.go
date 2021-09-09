@@ -20,6 +20,10 @@ func (w *Wallet) Deposit(amount Bitcoin) {
 	w.balance += amount
 }
 
+func (w *Wallet) Withdraw(amount Bitcoin) {
+	w.balance -= amount
+}
+
 /* Balance returns wallet balance
 This was done for the sake of consistency in my receiver type */
 func (w *Wallet) Balance() Bitcoin {
