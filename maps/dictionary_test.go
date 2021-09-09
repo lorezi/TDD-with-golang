@@ -45,18 +45,13 @@ func TestAdd(t *testing.T) {
 func TestUpdate(t *testing.T) {
 	word := "golang"
 	definition := "Go is all about type"
+	newDefinition := "Go forever"
 
 	// add a word to the dictionary
 	dictionary := Dictionary{word: definition}
-
-	// search for the word you want to update
-	got, _ := dictionary.Search("golang")
-	if got == "" {
-		t.Fatal("suppose to find a word")
-	}
-
 	// update the dictionary
-	dictionary.Update(word, definition)
+	dictionary.Update(word, newDefinition)
+	assertDefinition(t, dictionary, word, newDefinition)
 
 }
 
