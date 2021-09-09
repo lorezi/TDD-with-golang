@@ -2,7 +2,10 @@ package main
 
 import "errors"
 
-var ErrNotFound = errors.New("could not find the word you were looking for")
+var (
+	ErrNotFound   = errors.New("could not find the word you were looking for")
+	ErrWordExists = errors.New("golang has practically helped me to understand those theoretical concepts in cs")
+)
 
 type Dictionary map[string]string
 
