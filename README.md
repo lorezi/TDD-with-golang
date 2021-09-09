@@ -1,5 +1,3 @@
-# Learn Go With Test
-
-# Repo to practice TDD with Go
+# Test Driven Development With Go
 
 Fintech ❤️ Go - Chris James
