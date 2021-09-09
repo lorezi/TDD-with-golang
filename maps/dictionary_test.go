@@ -21,18 +21,25 @@ func TestSearch(t *testing.T) {
 }
 
 func TestAdd(t *testing.T) {
-	dictionary := Dictionary{}
 
-	dictionary.Add("golang", "late have I known golang")
-	want := "late have I known golang"
-	got, err := dictionary.Search("golang")
-	if err != nil {
-		t.Fatal("should find added word:", err)
-	}
+	t.Run("new word", func(t *testing.T) {
+		dictionary := Dictionary{}
+		word := "golang"
+		definition := "late have I known golang"
 
-	if got != want {
-		t.Errorf("got %q, want %q", got, want)
-	}
+		err := dictionary.Add(word, definition)
+		assertError(t, err, nil)
+		assertDefinition(t, dictionary, word, definition)
+	})
+
+	t.Run("existing word", func(t *testing.T) {
+		word := "golang"
+		definition := "late have I known golang"
+		dictionary := Dictionary{word: definition}
+		err := dictionary.Add(word, "golang has practically helped me to understand those theoretical concepts in cs")
+		assertError(t, err, ErrWordExists)
+		assertDefinition(t, dictionary, word, definition)
+	})
 }
 
 func assertStrings(t testing.TB, got, want string) {
@@ -46,6 +53,19 @@ func assertError(t testing.TB, got, want error) {
 	t.Helper()
 	if got != want {
 		t.Errorf("got error %q want %q", got, want)
+	}
+}
+
+func assertDefinition(t testing.TB, dictionary Dictionary, word, definition string) {
+	t.Helper()
+
+	got, err := dictionary.Search("golang")
+	if err != nil {
+		t.Fatal("should find added word:", err)
+	}
+
+	if got != definition {
+		t.Errorf("got %q, want %q", got, definition)
 	}
 
 }
