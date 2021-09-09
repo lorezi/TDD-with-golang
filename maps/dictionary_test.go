@@ -34,9 +34,9 @@ func TestAdd(t *testing.T) {
 
 	t.Run("existing word", func(t *testing.T) {
 		word := "golang"
-		definition := "late have I known golang"
+		definition := "this is just a test"
 		dictionary := Dictionary{word: definition}
-		err := dictionary.Add(word, "golang has practically helped me to understand those theoretical concepts in cs")
+		err := dictionary.Add(word, "new test")
 		assertError(t, err, ErrWordExists)
 		assertDefinition(t, dictionary, word, definition)
 	})
@@ -52,7 +52,7 @@ func assertStrings(t testing.TB, got, want string) {
 func assertError(t testing.TB, got, want error) {
 	t.Helper()
 	if got != want {
-		t.Errorf("got error %q want %q", got, want)
+		t.Errorf("got %q want %q", got, want)
 	}
 }
 
