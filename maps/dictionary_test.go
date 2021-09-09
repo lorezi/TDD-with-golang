@@ -5,27 +5,20 @@ import (
 )
 
 func TestSearch(t *testing.T) {
+	dictionary := Dictionary{"golang": "Go is about type"}
 
 	t.Run("known word", func(t *testing.T) {
-		dictionary := Dictionary{"golang": "Go is about type"}
-
 		got, _ := dictionary.Search("golang")
 		want := "Go is about type"
-
 		assertStrings(t, got, want)
 	})
 
 	t.Run("unknown word", func(t *testing.T) {
-		dictionary := Dictionary{"golang": "Go is about type"}
-		word := "Java"
-		_, err := dictionary.Search(word)
-		want := "could not find the word you were looking for"
-
+		_, err := dictionary.Search("Java")
 		if err == nil {
 			t.Fatal("expected to get an error.")
 		}
-
-		assertStrings(t, err.Error(), want)
+		assertStrings(t, err.Error(), ErrNotFound.Error())
 	})
 
 }
