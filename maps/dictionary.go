@@ -44,3 +44,7 @@ func (d Dictionary) Add(word, definition string) error {
 	return ErrWordExists
 
 }
+
+func (d Dictionary) Update(word, definition string) {
+
+}

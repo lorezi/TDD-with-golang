@@ -50,12 +50,9 @@ func TestUpdate(t *testing.T) {
 	dictionary := Dictionary{word: definition}
 
 	// search for the word you want to update
-	got, err := dictionary.Search("golang")
+	got, _ := dictionary.Search("Java")
 	if got == "" {
 		t.Fatal("suppose to find a word")
-	}
-	if err != nil {
-		t.Fatal(err)
 	}
 
 	// update the dictionary
