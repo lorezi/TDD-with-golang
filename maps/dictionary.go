@@ -3,7 +3,7 @@ package main
 const (
 	ErrNotFound         = DictionaryErr("could not find the word you were looking for")
 	ErrWordExists       = DictionaryErr("cannot add new word because it already exists")
-	ErrWordDoesNotExist = DictionaryErr("could not update the definition because word does not exist")
+	ErrWordDoesNotExist = DictionaryErr("could not update the word because it does not exist")
 )
 
 type DictionaryErr string
@@ -47,7 +47,11 @@ func (d Dictionary) Add(word, definition string) error {
 }
 
 func (d Dictionary) Update(word, definition string) error {
-	d[word] = definition
+	_, err := d.Search(word)
+	if err != nil {
+		return ErrWordDoesNotExist
+	}
 
+	d[word] = definition
 	return nil
 }
