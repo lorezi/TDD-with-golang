@@ -19,6 +19,7 @@ func (d Dictionary) Search(word string) (string, error) {
 	if !exist {
 		return "", ErrNotFound
 	}
+
 	return definition, nil
 }
 
