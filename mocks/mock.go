@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"os"
 	"time"
 )
 
@@ -14,7 +13,7 @@ type Sleeper interface {
 	Sleep()
 }
 
-func Countdown(w io.Writer) {
+func Countdown(w io.Writer, s Sleeper) {
 	for i := countdownStart; i > 0; i-- {
 		time.Sleep(1 * time.Second)
 		fmt.Fprintf(w, "%d\n", i)
@@ -24,5 +23,5 @@ func Countdown(w io.Writer) {
 }
 
 func main() {
-	Countdown(os.Stdout)
+	// Countdown(os.Stdout, )
 }
