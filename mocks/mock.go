@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"os"
 	"time"
 )
 
@@ -13,15 +14,22 @@ type Sleeper interface {
 	Sleep()
 }
 
+type RealSleeper struct{}
+
+func (d *RealSleeper) Sleep() {
+	time.Sleep(1 * time.Second)
+}
+
 func Countdown(w io.Writer, s Sleeper) {
 	for i := countdownStart; i > 0; i-- {
-		time.Sleep(1 * time.Second)
+		s.Sleep()
 		fmt.Fprintf(w, "%d\n", i)
 	}
-	time.Sleep(1 * time.Second)
+	s.Sleep()
 	fmt.Fprint(w, finalWord)
 }
 
 func main() {
-	// Countdown(os.Stdout, )
+	sleeper := &RealSleeper{}
+	Countdown(os.Stdout, sleeper)
 }
