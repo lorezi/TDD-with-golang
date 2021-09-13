@@ -1,26 +1,26 @@
 package main
 
-import (
-	"net/http"
-	"time"
-)
-
-func makeRequest(url string) time.Duration {
-	start := time.Now()
-	http.Get(url)
-	duration := time.Since(start)
-
-	return duration
-}
+import "net/http"
 
 func Racer(a, b string) (winner string) {
-
-	responseA := makeRequest(a)
-	responseB := makeRequest(b)
-
-	if responseA < responseB {
+	select {
+	case <-ping(a):
 		return a
+	case <-ping(b):
+		return b
 	}
+}
 
-	return b
+/*
+Why struct{} and not another type like a bool? Well, a chan struct{} is the smallest data type available from a memory perspective.
+*/
+func ping(url string) chan struct{} {
+	ch := make(chan struct{})
+
+	go func() {
+		http.Get(url)
+		close(ch)
+	}()
+
+	return ch
 }
