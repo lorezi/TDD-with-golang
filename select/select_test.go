@@ -18,16 +18,19 @@ func server(delay time.Duration) *httptest.Server {
 
 func TestRacer(t *testing.T) {
 
-	slowServer := server(20)
-	fastServer := server(0)
+	t.Run("returns an error if a server doesn't respond within 10s", func(t *testing.T) {
 
-	defer slowServer.Close()
-	defer fastServer.Close()
+		serverA := server(11)
+		serverB := server(12)
 
-	want := fastServer.URL
-	got := Racer(slowServer.URL, fastServer.URL)
+		defer serverA.Close()
+		defer serverB.Close()
 
-	if got != want {
-		t.Errorf("got %q, want %q", got, want)
-	}
+		_, err := Racer(serverA.URL, serverB.URL)
+
+		if err == nil {
+			t.Errorf("expected an error but didn't get one")
+		}
+	})
+
 }
