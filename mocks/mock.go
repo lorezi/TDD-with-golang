@@ -15,6 +15,10 @@ type ConfigurableSleeper struct {
 	sleep    func(time.Duration)
 }
 
+func (c *ConfigurableSleeper) Sleep() {
+
+}
+
 type Sleeper interface {
 	Sleep()
 }
