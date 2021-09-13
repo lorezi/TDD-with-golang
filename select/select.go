@@ -5,17 +5,20 @@ import (
 	"time"
 )
 
+func makeRequest(url string) time.Duration {
+	start := time.Now()
+	http.Get(url)
+	duration := time.Since(start)
+
+	return duration
+}
+
 func Racer(a, b string) (winner string) {
 
-	startA := time.Now()
-	http.Get(a)
-	aDuration := time.Since(startA)
+	responseA := makeRequest(a)
+	responseB := makeRequest(b)
 
-	startB := time.Now()
-	http.Get(b)
-	bDuration := time.Since(startB)
-
-	if aDuration < bDuration {
+	if responseA < responseB {
 		return a
 	}
 
