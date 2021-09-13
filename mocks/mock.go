@@ -23,12 +23,6 @@ type Sleeper interface {
 	Sleep()
 }
 
-type RealSleeper struct{}
-
-func (d *RealSleeper) Sleep() {
-	time.Sleep(1 * time.Second)
-}
-
 func Countdown(w io.Writer, s Sleeper) {
 	for i := countdownStart; i > 0; i-- {
 		s.Sleep()
