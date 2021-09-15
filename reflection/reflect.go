@@ -1,6 +1,8 @@
 package main
 
-import "reflect"
+import (
+	"reflect"
+)
 
 func getValue(x interface{}) reflect.Value {
 
