@@ -11,13 +11,14 @@ func walk(x interface{}, fn func(input string)) {
 		}
 
 		if field.Kind() == reflect.Struct {
-			for i := 0; i < field.NumField(); i++ {
-				nestedField := field.Field(i)
-				if nestedField.Kind() == reflect.String {
-					fn(nestedField.String())
-				}
+			// for i := 0; i < field.NumField(); i++ {
+			// 	nestedField := field.Field(i)
+			// 	if nestedField.Kind() == reflect.String {
+			// 		fn(nestedField.String())
+			// 	}
 
-			}
+			// }
+			walk(field.Interface(), fn)
 		}
 
 	}
