@@ -86,6 +86,14 @@ func TestWalk(t *testing.T) {
 			},
 			[]string{"Lagos", "Abuja"},
 		},
+		{
+			"Maps",
+			map[string]string{
+				"Foo": "Bar",
+				"Baz": "Boz",
+			},
+			[]string{"Bar", "Boz"},
+		},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.Name, func(t *testing.T) {
