@@ -6,7 +6,6 @@ type Counter struct {
 
 func (c *Counter) Inc() {
 	c.value++
-
 }
 
 func (c *Counter) Value() int {
