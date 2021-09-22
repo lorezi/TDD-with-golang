@@ -68,7 +68,7 @@ func TestServer(t *testing.T) {
 		svr.ServeHTTP(response, request)
 
 		if !store.cancelled {
-			t.Errorf("store was not told to cancel")
+			t.Errorf("store was not told to cancel 🥵")
 		}
 		store.assertWasCancelled()
 	})
