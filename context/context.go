@@ -12,7 +12,19 @@ type Store interface {
 
 func Server(store Store) http.HandlerFunc {
 	return func(rw http.ResponseWriter, r *http.Request) {
-		store.Cancel()
-		fmt.Fprintf(rw, store.Fetch())
+		ctx := r.Context()
+
+		data := make(chan string, 1)
+
+		go func() {
+			data <- store.Fetch()
+		}()
+
+		select {
+		case d := <-data:
+			fmt.Fprintf(rw, d)
+		case <-ctx.Done():
+			store.Cancel()
+		}
 	}
 }
